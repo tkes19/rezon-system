@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import Link from 'next/link'
 
 export default function OrdersManager() {
   const [orders, setOrders] = useState<Order[]>([])
@@ -121,6 +122,9 @@ export default function OrdersManager() {
                       onClick={() => handleDeleteOrder(order.id)}
                     >
                       Usuń
+                    </Button>
+                    <Button asChild variant="outline">
+                      <Link href={`/orders/${order.id}`}>Szczegóły</Link>
                     </Button>
                   </div>
                 )}
