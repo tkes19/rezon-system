@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ./my-app/"
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NODE_VERSION = "20"
+  NEXT_PUBLIC_SUPABASE_URL = "https://pktqdekkbkwhikxxlilh.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrdHFkZWtrYmt3aGlreHhsaWxoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA3NDIyMjIsImV4cCI6MjAyNjMxODIyMn0.FeCgf_y7z8y1bfx8Rvkcw6VPVjoFb5FrLEieHm8rgwA"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  node_bundler = "esbuild" 
