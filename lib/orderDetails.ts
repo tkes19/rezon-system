@@ -1,9 +1,14 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-const supabase = createClient(supabaseUrl, supabaseKey)
+// Sprawdzenie, czy zmienne środowiskowe są dostępne
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Brak wymaganych zmiennych środowiskowych Supabase dla modułu orderDetails.ts");
+}
+
+const supabase = createClient(supabaseUrl!, supabaseKey!)
 
 export interface OrderDetail {
   id: number
@@ -15,6 +20,10 @@ export interface OrderDetail {
 
 // Pobieranie wszystkich szczegółów dla danego zamówienia
 export async function getOrderDetails(orderId: number) {
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Brak konfiguracji Supabase. Wymagane: NEXT_PUBLIC_SUPABASE_URL i NEXT_PUBLIC_SUPABASE_ANON_KEY");
+  }
+
   const { data, error } = await supabase
     .from('order_details')
     .select('*')
@@ -30,6 +39,10 @@ export async function getOrderDetails(orderId: number) {
 
 // Dodawanie nowego szczegółu zamówienia
 export async function addOrderDetail(orderDetail: Omit<OrderDetail, 'id'>) {
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Brak konfiguracji Supabase. Wymagane: NEXT_PUBLIC_SUPABASE_URL i NEXT_PUBLIC_SUPABASE_ANON_KEY");
+  }
+
   const { data, error } = await supabase
     .from('order_details')
     .insert([orderDetail])
@@ -44,6 +57,10 @@ export async function addOrderDetail(orderDetail: Omit<OrderDetail, 'id'>) {
 
 // Aktualizacja szczegółu zamówienia
 export async function updateOrderDetail(id: number, orderDetail: Partial<Omit<OrderDetail, 'id'>>) {
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Brak konfiguracji Supabase. Wymagane: NEXT_PUBLIC_SUPABASE_URL i NEXT_PUBLIC_SUPABASE_ANON_KEY");
+  }
+
   const { data, error } = await supabase
     .from('order_details')
     .update(orderDetail)
@@ -59,6 +76,10 @@ export async function updateOrderDetail(id: number, orderDetail: Partial<Omit<Or
 
 // Usuwanie szczegółu zamówienia
 export async function deleteOrderDetail(id: number) {
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Brak konfiguracji Supabase. Wymagane: NEXT_PUBLIC_SUPABASE_URL i NEXT_PUBLIC_SUPABASE_ANON_KEY");
+  }
+
   const { error } = await supabase
     .from('order_details')
     .delete()

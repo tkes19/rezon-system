@@ -7,6 +7,8 @@
 
 [build.environment]
   NEXT_CACHE_FOLDER = ".next/cache"
+  NEXT_PUBLIC_SUPABASE_URL = "https://pktqdekkbkwhikxxlilh.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrdHFkZWtrYmt3aGlreHhsaWxoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTA3NDIyMjIsImV4cCI6MjAyNjMxODIyMn0.FeCgf_y7z8y1bfx8Rvkcw6VPVjoFb5FrLEieHm8rgwA"
 
 # Ustawienia cache dla przyśpieszenia procesu budowania
 [build.processing.cache]
