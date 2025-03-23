@@ -1,9 +1,0 @@
-# Przekierowania dla konkretnych stron
-/                   /index.html            200
-/orders             /orders/index.html     200
-
-# Przekierowanie dla dynamicznych ścieżek zamówień
-/orders/*           /orders/[id].html      200
-
-# Przekierowanie dla pozostałych ścieżek
-/*                  /index.html            200 
