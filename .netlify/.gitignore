@@ -1,0 +1,8 @@
+# Ignoruj wszystko
+*
+
+# Oprócz tych plików/folderów
+!.gitignore
+!.toml
+!plugins/
+!plugins/** 

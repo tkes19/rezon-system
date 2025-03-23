@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_CACHE_FOLDER = ".next/cache"
+
+# Ustawienia cache dla przyśpieszenia procesu budowania
+[build.processing.cache]
+  directories = [
+    ".next/cache",
+    ".next/server",
+    ".next/static"
+  ] 
