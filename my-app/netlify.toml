@@ -1,7 +1,7 @@
 [build]
+  base = "my-app"
   command = "npm run build"
-  publish = ".next"
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ./my-app/"
+  publish = "out"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
@@ -15,6 +15,11 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/orders/*"
+  to = "/orders/[id].html"
   status = 200
 
 [functions]
