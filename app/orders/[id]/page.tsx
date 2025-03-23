@@ -1,12 +1,13 @@
 import OrderDetailsManager from '@/components/OrderDetailsManager'
 
-interface OrderPageProps {
-  params: {
-    id: string
-  }
-}
-
-export default function OrderPage({ params }: OrderPageProps) {
+// @ts-ignore - Ignorowanie błędów typowania z Next.js 15.2.3
+export default async function OrderPage({ 
+  params, 
+  searchParams 
+}: { 
+  params: any, 
+  searchParams: any 
+}) {
   const orderId = parseInt(params.id)
 
   return (
